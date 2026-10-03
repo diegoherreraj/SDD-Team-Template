@@ -90,6 +90,7 @@ To launch the autonomous development pipeline on a new idea, type the following 
 
 5. **Step 5: Technical Writer (`@technicalwriter`) — `update_readme.md`**
    - Documents completed objectives, updates `README.md` with the new version milestone, and summarizes next steps.
+   - Maintains technical onboarding documentation, including environment prerequisites, runtime dependencies, environment variables, and local execution steps.
 
 ---
 
@@ -98,5 +99,5 @@ To launch the autonomous development pipeline on a new idea, type the following 
 Documentation in this repository is maintained automatically and updated systematically after every development cycle:
 
 - **Technical Specifications**: Saved to `production_artifacts/Technical_Specification.md`. Must include Executive Summary, System Architecture, Tech Stack, and Data Flow.
-- **Project Progress & History**: Recorded in the root `README.md`. Historical milestone entries are preserved chronologically; new cycle completion summaries are appended under **Version History & Status**.
+- **Project Progress & Technical Onboarding**: Recorded in the root `README.md`. Historical milestone entries are preserved chronologically under **Version History & Status**, while the **Prerequisites & Local Development Setup** guide is kept continuously synchronized with runtime dependencies and configurations introduced in `app_build/`.
 - **Code Documentation**: Code inside `app_build/` must include inline JSDoc/Docstrings and explicit `README.md` files where applicable for framework specific instructions.
