@@ -1,10 +1,15 @@
-# 🤖 SDD Team Template (v0.1)
+# 🤖 SDD Team Template (v0.2)
 
 Welcome to the **Specification-Driven Development (SDD) Team Template**. This repository provides an autonomous multi-agent development workflow designed to turn raw software ideas into fully engineered, audited, and deployed applications.
 
 ---
 
 ## 📅 Version History & Status
+
+### v0.2 — Automated Dual-Documentation Synchronization (2026-10-19)
+* **Milestone**: Added the `sync_docs` skill (`.agents/skills/sync_docs/SKILL.md` and `.agents/skills/sync_docs.md`) and integrated the **Final Documentation Directive** into `.agents/workflows/startcycle.md` and `.agents/skills/startcycle/`.
+* **Developments**: Automated end-of-cycle collaboration between `@pm` and `@technicalwriter` after `@qa` and `@devops` verify a build to synchronize `production_artifacts/Technical_Specification.md` and the root `README.md`.
+* **Next Steps**: Ready for project initialization via `/startcycle <idea>`.
 
 ### v0.1 — Initial Template Release (2026-08-25)
 * **Milestone**: Established template structure, multi-agent roles, pipeline skills, and baseline documentation.
@@ -19,13 +24,17 @@ Welcome to the **Specification-Driven Development (SDD) Team Template**. This re
 ├── .agents/
 │   ├── agents.md               # Autonomous Agent Role Definitions (@pm, @engineer, @qa, @devops, @technicalwriter)
 │   ├── skills/
-│   │   ├── startcycle.md       # Pipeline Orchestration Skill (/startcycle <idea>)
+│   │   ├── startcycle/SKILL.md # Native Antigravity Skill (/startcycle <idea>)
+│   │   ├── sync_docs/SKILL.md  # Native Antigravity Skill (/sync_docs) for Spec + README Sync
+│   │   ├── startcycle.md       # Pipeline Orchestration Skill
 │   │   ├── write_specs.md      # PM Skill: Specs & Approval Gate
 │   │   ├── generate_code.md    # Engineer Skill: Code Generation
 │   │   ├── audit_code.md       # QA Skill: Code Auditing & Bug Fixing
 │   │   ├── deply_app.md        # DevOps Skill: Local Server Launch
-│   │   └── update_readme.md    # Technical Writer Skill: Documentation Updates
-│   └── workflows/              # Custom automated workflow configurations
+│   │   ├── sync_docs.md        # PM & Technical Writer Skill: Dual-Doc Synchronization
+│   │   └── update_readme.md    # Technical Writer Skill: README Onboarding & Milestone Updates
+│   └── workflows/
+│       └── startcycle.md       # Automated Startcycle Workflow with Final Documentation Directive
 ├── app_build/                  # Target directory for generated application source code
 └── production_artifacts/       # Target directory for Technical Specifications & Architecture docs
 ```
@@ -42,19 +51,19 @@ To create a new project using this template:
 New-Item -ItemType Directory -Path "C:\Projects\MyNewProject"
 
 # 2. Copy the template structure into the new folder
-Copy-Item -Path "c:\Projects\SDD Team Template\.agents" -Destination "C:\Projects\MyNewProject\.agents" -Recurse
+Copy-Item -Path "c:\Projects\SDD-Team-Template\.agents" -Destination "C:\Projects\MyNewProject\.agents" -Recurse
 New-Item -ItemType Directory -Path "C:\Projects\MyNewProject\app_build"
 New-Item -ItemType Directory -Path "C:\Projects\MyNewProject\production_artifacts"
-Copy-Item -Path "c:\Projects\SDD Team Template\README.md" -Destination "C:\Projects\MyNewProject\README.md"
+Copy-Item -Path "c:\Projects\SDD-Team-Template\README.md" -Destination "C:\Projects\MyNewProject\README.md"
 ```
 
 ### Option B: Using Command Prompt (cmd)
 ```cmd
 mkdir "C:\Projects\MyNewProject"
-xcopy "c:\Projects\SDD Team Template\.agents" "C:\Projects\MyNewProject\.agents" /E /I /H
+xcopy "c:\Projects\SDD-Team-Template\.agents" "C:\Projects\MyNewProject\.agents" /E /I /H
 mkdir "C:\Projects\MyNewProject\app_build"
 mkdir "C:\Projects\MyNewProject\production_artifacts"
-copy "c:\Projects\SDD Team Template\README.md" "C:\Projects\MyNewProject\README.md"
+copy "c:\Projects\SDD-Team-Template\README.md" "C:\Projects\MyNewProject\README.md"
 ```
 
 > [!TIP]
@@ -88,16 +97,17 @@ To launch the autonomous development pipeline on a new idea, type the following 
    - Detects the project stack, installs required packages, and launches a local background server.
    - Provides a clickable `localhost` URL to view the live application.
 
-5. **Step 5: Technical Writer (`@technicalwriter`) — `update_readme.md`**
-   - Documents completed objectives, updates `README.md` with the new version milestone, and summarizes next steps.
-   - Maintains technical onboarding documentation, including environment prerequisites, runtime dependencies, environment variables, and local execution steps.
+5. **Step 5: Final Documentation Directive (`@pm` & `@technicalwriter`) — `sync_docs`**
+   - Once `@qa` and `@devops` verify the build, `@pm` and `@technicalwriter` execute the `sync_docs` skill.
+   - Updates `production_artifacts/Technical_Specification.md` with as-built architectural changes and revision history.
+   - Logs the new version, developments, next steps, and synchronized environment prerequisites/setup instructions in the root `README.md`.
 
 ---
 
 ## 📝 Documentation Standards & Writing Guidelines
 
-Documentation in this repository is maintained automatically and updated systematically after every development cycle:
+Documentation in this repository is maintained automatically via the `sync_docs` skill after every development or bug-fixing cycle:
 
-- **Technical Specifications**: Saved to `production_artifacts/Technical_Specification.md`. Must include Executive Summary, System Architecture, Tech Stack, and Data Flow.
+- **Technical Specifications**: Saved to `production_artifacts/Technical_Specification.md`. Must include Executive Summary, System Architecture, Tech Stack, Data Flow, and a chronological Revision & Version History.
 - **Project Progress & Technical Onboarding**: Recorded in the root `README.md`. Historical milestone entries are preserved chronologically under **Version History & Status**, while the **Prerequisites & Local Development Setup** guide is kept continuously synchronized with runtime dependencies and configurations introduced in `app_build/`.
 - **Code Documentation**: Code inside `app_build/` must include inline JSDoc/Docstrings and explicit `README.md` files where applicable for framework specific instructions.

@@ -9,3 +9,4 @@ When the user types `/startcycle <idea>`, orchestrate the development process st
 2. Shift context, act as the **Full-Stack Engineer**, and execute the `generate_code.md` skill.
 3. Shift context, act as the **QA Engineer**, and execute the `audit_code.md` skill.
 4. Shift context, act as the **DevOps Master**, and execute the `deploy_app.md` skill.
+5. **Final Documentation Directive:** Once @qa and @devops verify the build, @pm and @technicalwriter must execute the `sync_docs` skill to update `production_artifacts/Technical_Specification.md` and log the new version, developments, and next steps in the root `README.md`.
